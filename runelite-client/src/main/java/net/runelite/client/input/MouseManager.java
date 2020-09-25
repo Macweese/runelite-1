@@ -40,14 +40,9 @@ public class MouseManager
 
 	private final List<MouseListener> mouseListeners = new CopyOnWriteArrayList<>();
 	private final List<MouseWheelListener> mouseWheelListeners = new CopyOnWriteArrayList<>();
-
-	private final RuneLiteConfig runeLiteConfig;
-
+	
 	@Inject
-	private MouseManager(RuneLiteConfig runeLiteConfig)
-	{
-		this.runeLiteConfig = runeLiteConfig;
-	}
+	private RuneLiteConfig runeLiteConfig;
 
 	public void registerMouseListener(MouseListener mouseListener)
 	{
@@ -141,7 +136,7 @@ public class MouseManager
 		}
 		return mouseEvent;
 	}
-
+	
 	private void checkExtraMouseButtons(MouseEvent mouseEvent)
 	{
 		// Prevent extra mouse buttons from being passed into the client,

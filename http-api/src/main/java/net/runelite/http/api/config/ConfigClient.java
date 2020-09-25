@@ -28,7 +28,6 @@ import com.google.gson.JsonParseException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import lombok.AllArgsConstructor;
@@ -68,7 +67,7 @@ public class ConfigClient
 		try (Response response = client.newCall(request).execute())
 		{
 			InputStream in = response.body().byteStream();
-			return RuneLiteAPI.GSON.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), Configuration.class);
+			return RuneLiteAPI.GSON.fromJson(new InputStreamReader(in), Configuration.class);
 		}
 		catch (JsonParseException ex)
 		{

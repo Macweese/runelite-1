@@ -33,7 +33,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Comparator;
@@ -104,7 +103,7 @@ public class FlatStorage implements Storage
 		for (Index idx : store.getIndexes())
 		{
 			String file = idx.getId() + EXTENSION;
-			try (BufferedReader br = new BufferedReader(new InputStreamReader(openReader(file), StandardCharsets.UTF_8)))
+			try (BufferedReader br = new BufferedReader(new InputStreamReader(openReader(file))))
 			{
 				int lineNo = 0;
 				Archive archive = null;
@@ -214,7 +213,7 @@ public class FlatStorage implements Storage
 		for (Index idx : store.getIndexes())
 		{
 			String file = idx.getId() + EXTENSION;
-			try (PrintStream br = new PrintStream(openWriter(file), false, StandardCharsets.UTF_8.name()))
+			try (PrintStream br = new PrintStream(openWriter(file)))
 			{
 				br.printf("protocol=%d\n", idx.getProtocol());
 				br.printf("revision=%d\n", idx.getRevision());

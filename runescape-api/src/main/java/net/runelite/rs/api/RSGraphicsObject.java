@@ -26,8 +26,4 @@ public interface RSGraphicsObject extends GraphicsObject, RSEntity
 	@Import("height")
 	@Override
 	int getHeight();
-
-	@Import("isFinished")
-	@Override
-	boolean finished();
 }
